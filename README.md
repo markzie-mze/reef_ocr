@@ -6,6 +6,8 @@ AI-powered data extraction from field datasheets using Claude Vision API.
 
 This repository contains extraction prompts and scripts for digitizing handwritten field datasheets from SHAMS monitoring programs. Each datasheet type has a dedicated prompt optimized for that specific form layout.
 
+It includes tests with different models 
+
 **Key features:**
 - Modular structure supporting multiple teams & datasheet types
 - Version control for evolving datasheet formats
