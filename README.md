@@ -27,7 +27,7 @@ It includes tests with different models
 
 ## Quick Start
 
-### 1. Clone & Setup
+### 1. Clone & Setups
 ```bash
 git clone https://github.com/your-org/datasheet_extraction.git
 cd datasheet_extraction
@@ -36,7 +36,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Set API Key
+### 2. Set API Key 
 ```bash
 export ANTHROPIC_API_KEY="sk-ant-your-key-here"
 ```
