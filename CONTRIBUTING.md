@@ -9,7 +9,7 @@ You'll need:
 - [ ] Understanding of all fields on the datasheet
 - [ ] List of valid values for dropdown/checkbox fields
 - [ ] Species list or other lookup values (if applicable)
-- [ ] Access to Claude API for testing
+- [ ] Access to Claude API for testing 
 
 ## Step 1: Create the Folder Structure
 
