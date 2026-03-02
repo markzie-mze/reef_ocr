@@ -114,6 +114,8 @@ CRITICAL rules for reading tallies:
 - Two single vertical strokes "II" in a cell = count of 2, not eleven
 - If marks span across column gridlines, assign them to the column where
   the BASE of the strokes sits
+- Occasionally, when space is short, users will include tallies in column or adjacent 
+   cells with a line pointing to them from where they originate 
 - Faint or light marks still count — surveyors sometimes write lightly
   underwater or in difficult conditions
 
@@ -122,14 +124,6 @@ CRITICAL rules for reading tallies:
 The "Transect" field in the header indicates which transect number(s) this
 sheet covers. The filename may also indicate the transect (e.g., "_T1" = Transect 1).
 
-Some sheets cover multiple transects on one page. When this happens:
-- The surveyor draws a horizontal line across the tally columns at some point
-  to mark the boundary between transects
-- Tallies ABOVE the line belong to the first transect
-- Tallies BELOW the line belong to the next transect
-- If you see this, output separate data blocks for each transect
-
-For single-transect sheets, output one transect block.
 
 === HANDLING ANNOTATIONS ===
 
