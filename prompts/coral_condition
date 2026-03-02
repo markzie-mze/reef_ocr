@@ -1,5 +1,7 @@
 #Coral Condition
 
+### as initiated by Scott B
+
 prompt = """Analyze this underwater reef survey data sheet image. 
 Focus on the DATA TABLE section (ignore the header for now).
 
