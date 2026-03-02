@@ -8,6 +8,8 @@ The prompt is the most critical component of extraction accuracy. A well-written
 
 **Key insight**: Claude has never seen your specific datasheet before. You need to describe it completely as if explaining to someone who's never seen it.
 
+Once it knows and learns idiosyncracies of different datasheets, observers, etc it learns so keep iterating on the prompt to improve it and with it the AI's ability to accurately record and translate the datasheets.
+
 ## Prompt Structure
 
 Every extraction prompt should have these sections:
