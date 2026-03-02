@@ -1,0 +1,42 @@
+#Coral Condition
+
+prompt = """Analyze this underwater reef survey data sheet image. 
+Focus on the DATA TABLE section (ignore the header for now).
+
+Extract ALL data from the table and return it as a structured JSON object with this format:
+{
+    "column_headers": ["column1", "column2", "column3", ...],
+    "rows": [
+        ["value1", "value2", "value3", ...],
+        ["value1", "value2", "value3", ...],
+        ...
+    ],
+    "notes": "any additional observations about data quality or unclear entries"
+}
+
+The columns in the table are:
+ "Tr." - the transect number either a 1,2 or 3, Note if empty insert the last full value
+ "Genus" - this is the coral genus, where the cell contains '' for ditto use the last full value
+ "GF" - the Growth Form, will be one of CM, CB, CE, CT or OT
+ "Size Class" - the size class, will be a number from 1 through to 6
+ "Coral Health %" - the percentage of the coral that is healthy, will be a number from 0 to 100 in 10% increments,
+ "PD Severity" - the degree of physical damage, will be empty if none or one of A,B,C, or D
+ "Bleaching" - the level of coral bleaching, will be empty if none or one of PB, FB or RD
+ "DI" - the type of disease, will be empty if none or one of WS, BBD, SEB, GA, PLS or UN.
+ 
+ Note that the table repeats across the page, that is the left side of the page has the first part of the table which then continues onto the right side. So read the left side top to bottom and then the right side tp to bottom. 
+ Note that also once the transect has been done the user will mark the start of the next transect and then increment the value in the 'Tr." column.
+ 
+Important instructions:
+- Carefully read any handwritten text
+- If a cell is empty or unclear, use "UNCLEAR" or "EMPTY"
+- Preserve all data exactly as written
+- For any call that contains '' or the ditto mark use the last full value from the previous rows
+- If the growth form is CM and the genus is hard to determine between POR and POC then it will be POR for Porites
+- If the growth form is CM and the genus starts with 'PO' or looks like 'P?R' where ? is any single character then it will be POR for Porites
+- If the growth form is CB and the genus is hard to determine between POR and POC then it will be POC for Pocillopora
+- Include row numbers if visible
+- Include an additional column which represents the confidence of the conversions for that row of the table, confidence above 80% is 'High', below 50% is 'Low' and in between is 'Medium'
+- Note any abbreviations you observe
+
+Return ONLY the JSON object, no other text."""
