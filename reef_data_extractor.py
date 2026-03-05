@@ -65,8 +65,8 @@ except ImportError as e:
 PROMPT_DIR = Path(__file__).parent / "prompts"
 
 PROMPT_FILES = {
-    "fish_survey":      "fish_survey_extraction_prompt.txt",
-    "coral_condition":  "coral_condition_extraction_prompt.txt",
+    "fish_survey":      "fish_transect_survey_v1.1",
+    "coral_condition":  "coral_condition",
     # "invertebrate":   "invertebrate_extraction_prompt.txt",
     # "benthic_cover":  "benthic_cover_extraction_prompt.txt",
 }
@@ -144,6 +144,21 @@ class ReefDataExtractor:
             except ImportError:
                 print("ERROR: pip install openai --break-system-packages")
                 sys.exit(1)
+
+        elif self.provider == "ollama":
+            self.model = model or "llava:34b"
+            ollama_url = os.getenv("OLLAMA_URL", "http://100.85.136.83:11434")
+            try:
+                import openai
+                self.client = openai.OpenAI(
+                    base_url=f"{ollama_url}/v1",
+                    api_key="unused",
+                )
+            except ImportError:
+                print("ERROR: pip install openai --break-system-packages")
+                sys.exit(1)
+            print(f"  Ollama URL: {ollama_url}")
+
         else:
             print(f"ERROR: Unknown provider '{provider}'.")
             sys.exit(1)
@@ -174,7 +189,7 @@ class ReefDataExtractor:
                 ]}],
             )
             return msg.content[0].text
-        else:
+        else:  # openai and ollama both use OpenAI-compatible format
             resp = self.client.chat.completions.create(
                 model=self.model, max_tokens=8192,
                 messages=[{"role": "user", "content": [
@@ -329,6 +344,7 @@ Examples:
   %(prog)s image.jpeg --type coral_condition -f csv
   %(prog)s image.jpeg --prompt prompts/my_test.txt
   %(prog)s image.jpeg --type fish_survey --provider openai
+  %(prog)s image.jpeg --type fish_survey -p ollama -m llava:34b
 
 Batch:
   for img in images/Fish/*.jpeg; do
@@ -344,7 +360,7 @@ Batch:
     parser.add_argument("-o", "--output-dir", default=".")
     parser.add_argument("-f", "--format", choices=["json", "csv", "both"],
                         default="both")
-    parser.add_argument("-p", "--provider", choices=["claude", "openai"],
+    parser.add_argument("-p", "--provider", choices=["claude", "openai", "ollama"],
                         default="claude")
     parser.add_argument("-m", "--model")
     parser.add_argument("-k", "--api-key", dest="api_key")
