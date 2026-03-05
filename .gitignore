@@ -1,0 +1,16 @@
+# Data and outputs — never commit survey images or results
+outputs/
+images/
+*.jpeg
+*.jpg
+*.png
+*.csv
+*_extracted.json
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# macOS
+.DS_Store
