@@ -14,9 +14,8 @@ The architecture:
 
     reef_data_extractor.py          <-- this script (generic, rarely changes)
     prompts/
-        fish_survey_extraction_prompt.txt       <-- knows fish datasheet layout
-        coral_condition_extraction_prompt.txt   <-- knows coral datasheet layout
-        invertebrate_extraction_prompt.txt      <-- future: add as needed
+        fish_transect_survey_v1.1.txt       <-- knows fish datasheet layout
+        coral_condition_v1.1   <-- knows coral datasheet layout
         ...
 
 When you run the script, you tell it which datasheet type you're processing:
@@ -65,10 +64,8 @@ except ImportError as e:
 PROMPT_DIR = Path(__file__).parent / "prompts"
 
 PROMPT_FILES = {
-    "fish_survey":      "fish_transect_survey_v1.1",
-    "coral_condition":  "coral_condition",
-    # "invertebrate":   "invertebrate_extraction_prompt.txt",
-    # "benthic_cover":  "benthic_cover_extraction_prompt.txt",
+    "fish_survey_v1.1":      "fish_transect_survey_v1.1",
+    "coral_condition_v1.1":  "coral_condition_v1.1",
 }
 
 
