@@ -19,7 +19,7 @@ It includes tests with different models
 | Team | Datasheet | Status | Current Version |
 |------|-----------|--------|-----------------|
 | **Coral** | Fish Census | ✅ Active | v1 |
-| **Coral** | Coral Condition | 🚧 In Development | v1 |
+| **Coral** | Coral Condition | ✅ Active| v1 |
 | **Coral** | Juvenile Corals | 📋 Planned | - |
 | **Coral** | Macroinvertebrate | 📋 Planned | - |
 | **Turtle** | Nesting Survey | 📋 Planned | - |
